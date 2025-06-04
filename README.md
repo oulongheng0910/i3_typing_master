@@ -156,7 +156,7 @@ let timeLeft = 60; // Change to desired seconds
 
 ## 👨‍💻 Author
 
-**Oulong**
+**Heng Oulong**
 - Computer Science Student
 - Passionate about web development and educational tools
 - Built as part of learning full-stack development

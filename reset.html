@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Reset Password - Typing Test</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+       background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+                  url('https://images.unsplash.com/photo-1557682250-33bd709cbe85?ixlib=rb-4.0.3&auto=format&fit=crop&w=1400&q=80') no-repeat center center/cover;
+      color: white;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    nav {
+      background-color: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(8px);
+      padding: 1em 2em;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    nav .logo {
+      font-size: 1.8em;
+      font-weight: 800;
+      color: #ffffff;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 1.5em;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #00d9ff;
+    }
+
+    .container {
+      max-width: 400px;
+      background: rgba(255, 255, 255, 0.1);
+      margin: auto;
+      padding: 2em;
+      border-radius: 10px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+      margin-top: 5em;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 1em;
+    }
+
+    input {
+      width: 93%;
+      padding: 0.8em;
+      margin-bottom: 1em;
+      border: none;
+      border-radius: 5px;
+      font-size: 1em;
+    }
+
+    button {
+      width: 100%;
+      padding: 0.9em;
+      background: #00d9ff;
+      color: #000;
+      border: none;
+      font-size: 1em;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #00bcd4;
+    }
+
+    .link {
+      text-align: center;
+      margin-top: 1em;
+    }
+
+    .link a {
+      color: #00d9ff;
+      text-decoration: none;
+    }
+
+    .link a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      background-color: rgba(255, 255, 255, 0.05);
+      color: #ccc;
+      text-align: center;
+      padding: 1em;
+      font-size: 0.95em;
+      margin-top: auto;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">TypingTest</div>
+    <div>
+      <a href="landing.html">Home</a>
+      <a href="typing.html">Test</a>
+      <a href="results.html">Results</a>
+      <a href="about.html">About</a>
+      <a href="login.html">Login</a>
+      <a href="register.html">Register</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <h2>Reset Your Password</h2>
+    <form>
+      <input type="email" placeholder="Enter your email" required />
+      <button type="submit">Send Reset Link</button>
+    </form>
+    <div class="link">
+      <a href="login.html">Back to Login</a>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2025 TypingTest. All rights reserved.
+  </footer>
+
+</body>
+</html>

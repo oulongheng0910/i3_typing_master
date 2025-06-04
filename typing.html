@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Typing Test</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+        url('https://images.unsplash.com/photo-1557682250-33bd709cbe85?ixlib=rb-4.0.3&auto=format&fit=crop&w=1400&q=80') no-repeat center center/cover;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    nav {
+      background-color: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(8px);
+      padding: 1em 2em;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    nav .logo {
+      font-size: 1.8em;
+      font-weight: 800;
+      color: #ffffff;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 1.5em;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #00d9ff;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: auto;
+      padding: 2em;
+      text-align: center;
+      margin-top: 3em;
+    }
+
+    #sentence {
+      font-size: 1.2em;
+      margin-bottom: 1em;
+      background: rgba(255,255,255,0.1);
+      padding: 1em;
+      border-radius: 10px;
+    }
+
+    textarea {
+      width: 100%;
+      padding: 1em;
+      font-size: 1.1em;
+      margin-top: 1em;
+      border: none;
+      border-radius: 8px;
+      resize: none;
+    }
+
+    .stats {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 1.5em;
+      font-size: 1.1em;
+      flex-wrap: wrap;
+    }
+
+    button {
+      margin-top: 2em;
+      padding: 0.8em 1.5em;
+      font-size: 1em;
+      background: #00d9ff;
+      color: #000;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    button:hover {
+      background: #00bcd4;
+    }
+
+    footer {
+      background-color: rgba(255, 255, 255, 0.05);
+      color: #ccc;
+      text-align: center;
+      padding: 1em;
+      margin-top: auto;
+      font-size: 0.95em;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">TypingTest</div>
+    <div>
+      <a href="landing.html">Home</a>
+      <a href="typing.html">Test</a>
+      <a href="results.html">Results</a>
+      <a href="about.html">About</a>
+      <a href="login.html">Login</a>
+      <a href="register.html">Register</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <h2>Typing Test</h2>
+    <div id="sentence">Click start to begin typing...</div>
+    <textarea id="input" rows="5" placeholder="Start typing here..." disabled></textarea>
+    <div class="stats">
+      <div>Time Left: <span id="time">60</span>s</div>
+      <div>Words: <span id="liveWords">0</span></div>
+      <div>Accuracy: <span id="liveAccuracy">0</span>%</div>
+      <div>WPM: <span id="wpm">0</span></div>
+    </div>
+    <button onclick="startTest()">Start Test</button>
+  </div>
+
+  <footer>
+    &copy; 2025 TypingTest. All rights reserved.
+  </footer>
+
+  <script>
+    const sentences = [
+      "The quick brown fox jumps over the lazy dog.",
+      "Typing is a useful skill in the digital world.",
+      "Accuracy is more important than speed.",
+      "Practice every day to improve your typing.",
+      "JavaScript can be used to build web applications.",
+      "Keep your eyes on the screen, not on the keyboard.",
+      "Use all your fingers while typing efficiently.",
+      "Stay calm and focused when typing fast.",
+      "Typing tests can improve your keyboard mastery.",
+      "Try to type smoothly, not aggressively."
+    ];
+
+    let timer, timeLeft = 60, started = false;
+    let totalTypedWords = 0, totalTypedChars = 0, totalCorrectChars = 0;
+    let currentSentence = "";
+
+    
+
+    const sentenceEl = document.getElementById("sentence");
+    const inputEl = document.getElementById("input");
+    const timeEl = document.getElementById("time");
+    const wpmEl = document.getElementById("wpm");
+    const liveWordsEl = document.getElementById("liveWords");
+    const liveAccuracyEl = document.getElementById("liveAccuracy");
+
+    function getRandomSentence() {
+      return sentences[Math.floor(Math.random() * sentences.length)];
+    }
+
+    function startTest() {
+      currentSentence = getRandomSentence();
+      sentenceEl.textContent = currentSentence;
+      inputEl.value = "";
+      inputEl.disabled = false;
+      inputEl.focus();
+      timeLeft = 60;
+      timeEl.textContent = timeLeft;
+      totalTypedWords = 0;
+      totalTypedChars = 0;
+      totalCorrectChars = 0;
+      wpmEl.textContent = 0;
+      liveWordsEl.textContent = 0;
+      liveAccuracyEl.textContent = 0;
+      started = true;
+      clearInterval(timer);
+
+      timer = setInterval(() => {
+        timeLeft--;
+        timeEl.textContent = timeLeft;
+        if (timeLeft <= 0) {
+          clearInterval(timer);
+          inputEl.disabled = true;
+          showFinalResult();
+          started = false;
+        }
+      }, 1000);
+    }
+
+    inputEl.addEventListener("keydown", function (e) {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        handleEnter();
+      }
+    });
+
+    function handleEnter() {
+      const typed = inputEl.value.trim();
+      const typedWords = typed.split(/\s+/).filter(Boolean);
+      const typedChars = typed.replace(/\s/g, "").length;
+
+      totalTypedWords += typedWords.length;
+      totalTypedChars += typedChars;
+
+      let correct = 0;
+      for (let i = 0; i < typed.length && i < currentSentence.length; i++) {
+        if (typed[i] === currentSentence[i]) correct++;
+      }
+      totalCorrectChars += correct;
+
+      // Update stats
+      liveWordsEl.textContent = totalTypedWords;
+      const accuracy = totalTypedChars > 0 ? Math.min(100, Math.round((totalCorrectChars / totalTypedChars) * 100)) : 0;
+      liveAccuracyEl.textContent = accuracy;
+
+      // Load next sentence
+      inputEl.value = "";
+      currentSentence = getRandomSentence();
+      sentenceEl.textContent = currentSentence;
+    }
+
+    function showFinalResult() {
+      const wpm = totalTypedWords;
+      const accuracy = totalTypedChars > 0 ? Math.min(100, Math.round((totalCorrectChars / totalTypedChars) * 100)) : 0;
+      wpmEl.textContent = wpm;
+      liveWordsEl.textContent = totalTypedWords;
+      liveAccuracyEl.textContent = accuracy;
+    }
+  </script>
+</body>
+</html>

@@ -1,39 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<style>
-body {
-    font-family: Arial, sans-serif;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-.contain {
-    width: 80%;
-    max-width: 800px;
-    text-align: center;
-    border: 1px solid black;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
+  <meta charset="UTF-8" />
+  <title>About Us - Typing Test</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+                  url('https://images.unsplash.com/photo-1557682250-33bd709cbe85?ixlib=rb-4.0.3&auto=format&fit=crop&w=1400&q=80') no-repeat center center/cover;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
 
-</style>
+    nav {
+      background-color: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(8px);
+      padding: 1em 2em;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    nav .logo {
+      font-size: 1.8em;
+      font-weight: 800;
+      color: #ffffff;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 1.5em;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #00d9ff;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: auto;
+      padding: 2em;
+      margin-top: 3em;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 1em;
+      font-size: 2em;
+    }
+
+    p {
+      font-size: 1.1em;
+      line-height: 1.8em;
+      text-align: justify;
+      margin-bottom: 1.5em;
+    }
+
+    .creator {
+      margin-top: 3em;
+      background: rgba(255, 255, 255, 0.08);
+      padding: 1.5em;
+      border-radius: 12px;
+      text-align: center;
+    }
+
+    .creator h3 {
+      font-size: 1.5em;
+      margin-bottom: 0.5em;
+      color: #00d9ff;
+    }
+
+    .creator p {
+      text-align: center;
+      font-size: 1.05em;
+    }
+
+    footer {
+      background-color: rgba(255, 255, 255, 0.05);
+      color: #ccc;
+      text-align: center;
+      padding: 1em;
+      margin-top: auto;
+      font-size: 0.95em;
+    }
+  </style>
+</head>
 <body>
-    
-    <h1>About Us</h1>
-    <div class="contain">
-        <p>We are a team of passionate developers dedicated to creating innovative solutions that make a difference in the world. Our mission is to leverage technology to solve real-world problems and improve the lives of people everywhere.</p>
-        <p>With a diverse team of experts in various fields, we bring together a wealth of knowledge and experience to tackle challenges head-on. We believe in collaboration, creativity, and continuous learning as the keys to success.</p>
-        <p>Join us on our journey as we strive to push the boundaries of what is possible and make a positive impact in the world through technology.</p>
-        <p>For more information, feel free to contact us at</p>
+
+  <nav>
+    <div class="logo">TypingTest</div>
+    <div>
+      <a href="landing.html">Home</a>
+      <a href="typing.html">Test</a>
+      <a href="results.html">Results</a>
+      <a href="about.html">About</a>
+      <a href="login.html">Login</a>
+      <a href="register.html">Register</a>
     </div>
-    
+  </nav>
+
+  <div class="container">
+    <h2>About This Website</h2>
+    <p>
+      Welcome to <strong>TypingTest</strong> — your interactive platform for practicing and improving your typing skills. Whether you're a student, a professional, or just someone who loves to type, this tool helps you boost your speed and accuracy through real-time feedback.
+    </p>
+    <p>
+      Built using clean HTML, CSS, and JavaScript, TypingTest is lightweight and responsive across devices. The test features a timer, real-time word count, WPM (words per minute), and accuracy tracking to help you monitor your progress.
+    </p>
+    <p>
+      Typing is more than just speed — it's about precision, rhythm, and muscle memory. With this platform, you can practice smarter and more efficiently.
+    </p>
+
+    <div class="creator">
+      <h3>Meet the Creator</h3>
+      <p>
+        Hello! I'm <strong>Oulong</strong>, a Computer Science student passionate about web development and creating tools that help people learn and grow.
+        <br><br>
+        This project was built as part of my learning journey to practice full-stack concepts and UI design. I hope you find it helpful, easy to use, and maybe even a little fun.
+        <br><br>
+        Thank you for visiting!
+      </p>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2025 TypingTest by Oulong. All rights reserved.
+  </footer>
 
 </body>
 </html>
